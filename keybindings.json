@@ -106,5 +106,13 @@
     "key": "ctrl-n",
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "escape",
+    "command": "vim.remap",
+    "when": "editorFocus && !terminalFocus && !notebookEditorFocused",
+    "args": {
+      "after": ["<Esc>"]
+    }
   }
 ]
