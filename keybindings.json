@@ -108,11 +108,21 @@
     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
   },
   {
+    "key": "space f",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+  },
+  {
     "key": "escape",
     "command": "vim.remap",
     "when": "editorFocus && !terminalFocus && !notebookEditorFocused",
     "args": {
       "after": ["<Esc>"]
     }
-  }
+  },
+  {
+    "key": "escape",
+    "command": "closeFindWidget",
+    "when": "findWidgetVisible"
+ }
 ]
