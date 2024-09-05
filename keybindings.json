@@ -109,7 +109,7 @@
   },
   {
     "key": "space f",
-    "command": "editor.action.startFindReplaceAction",
+    "command": "actions.find",
     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
   },
   {
