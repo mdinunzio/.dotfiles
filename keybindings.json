@@ -123,10 +123,19 @@
   // VS Code Shortcut Preservation
   {
     "key": "ctrl-n",
-    "command": "workbench.action.files.newUntitledFile",
+    "command": "workbench.action.files.newUntitledFile"
   },
   {
     "key": "ctrl-w",
-    "command": "workbench.action.closeActiveEditor",
+    "command": "workbench.action.closeActiveEditor"
   },
+  {
+    "key": "ctrl-c",
+    "command": "editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "ctrl-p",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && editorTextFocus"
+  }
 ]
