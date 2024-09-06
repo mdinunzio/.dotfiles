@@ -103,11 +103,6 @@
     }
   },
   {
-    "key": "ctrl-n",
-    "command": "editor.action.addSelectionToNextFindMatch",
-    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
-  },
-  {
     "key": "space f",
     "command": "actions.find",
     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
@@ -124,5 +119,14 @@
     "key": "escape",
     "command": "closeFindWidget",
     "when": "findWidgetVisible"
- }
+  },
+  // VS Code Shortcut Preservation
+  {
+    "key": "ctrl-n",
+    "command": "workbench.action.files.newUntitledFile",
+  },
+  {
+    "key": "ctrl-w",
+    "command": "workbench.action.closeActiveEditor",
+  },
 ]
