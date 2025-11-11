@@ -1,0 +1,8 @@
+# ~/.gitconfig
+[user]
+	name = Michael DiNunzio
+	email = mdinunzio@gmail.com
+# https://dillionmegida.com/p/delete-outdated-branches/
+[alias]
+    delete-local-merged = "!git fetch && git branch --merged | egrep -v 'master|dev|main|staging'  | xargs git branch -d"
+    dlm = "!git fetch && git branch --merged | egrep -v 'master|dev|main|staging'  | xargs git branch -d"
