@@ -146,7 +146,7 @@
   },
 // Claude Extension
   {
-    "key": "ctrl+shift+alt+i",
+    "key": "ctrl+alt+c",
     "command": "claude-vscode.focus",
     "when": "editorTextFocus && !config.claudeCode.useTerminal"
   }
