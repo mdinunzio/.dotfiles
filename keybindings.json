@@ -137,5 +137,10 @@
     "key": "ctrl-p",
     "command": "editor.action.clipboardPasteAction",
     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+i",
+    "command": "claude-vscode.focus",
+    "when": "editorTextFocus && !config.claudeCode.useTerminal"
   }
 ]
