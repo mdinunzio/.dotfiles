@@ -1,5 +1,5 @@
 {
-    "jupyter.notebookFileRoot": "${workspaceFolders}",
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
     "flake8.args": [
         "--max-line-length",
         "88",
@@ -7,5 +7,14 @@
     ],
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "git.confirmSync": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "git.enableSmartCommit": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }
