@@ -123,7 +123,13 @@
   // VS Code Shortcut Preservation
   {
     "key": "ctrl-n",
-    "command": "workbench.action.files.newUntitledFile"
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "ctrl-n",
+    "command": "workbench.action.files.newUntitledFile",
+    "when": "!explorerViewletFocus"
   },
   {
     "key": "ctrl-w",
