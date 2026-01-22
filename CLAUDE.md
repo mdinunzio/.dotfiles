@@ -1,0 +1,39 @@
+- python preferences
+	- flake8 Linting
+	- black for formatting (with post prompt hook)
+	- Google-style Docstrings 
+	- Pep 8 compliance
+	- Type hints
+	- Use uv as the package manager
+	- Use pytest for unit and integration tests
+	- Use python-dotenv to load .env files
+	- Use click for cli argument parsing
+	- Write functions for data manipulation tasks when possible, and classes only state is being managed, polymorphism makes sense, or dataclasses are being used, etc.
+	- Sort imports where it does not affect behavior (using iSort)
+- Use test-driven design
+	- Write non-passing tests first
+	- Write and adjust code until all tests pass
+- Good software engineering principles
+	- DRY code
+	- Clear variable naming
+	- Single responsibility principle
+	- Rule of 7
+	- Good modularization
+	- The architecture patterns used should reflect the intended use and effect of the software.
+	- NEVER hardcode credentials files in code that could be exposed on a public remote repo.
+	- Always store sensitive data in a .env file or a secrets manager.
+- Project structure
+	- Add a dedicated settings.py file
+		- Make environment variables as constants here
+		- Setup logging
+		- Import settings.py at the top of `__init.py__` so all logging and constants are the first thing setup whenever any module imports the main project folder
+	- The project folder should be named the same as the project (e.g. how the pandas project has a pandas folder that contains the source). Prefer this over src even for packages.
+	- If the project is a standalone application and not a library, it should have a main.py as (intended) its single point of entry.
+	- semantic versioning
+	- Store environment variables and secrets in .env
+	- Use .gitignore to hide .env files
+- workflow
+	- New branches of needed
+	- 1 pr per major change
+	- Changelog
+	- Version updates
