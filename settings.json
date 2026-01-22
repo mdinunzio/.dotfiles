@@ -16,5 +16,15 @@
     "git.enableSmartCommit": true,
     "[typescriptreact]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    }
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "claudeCode.preferredLocation": "panel",
+    "python.defaultInterpreterPath": "c:\\Program Files\\Python312\\python.exe",
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "remote.SSH.remotePlatform": {
+        "oracle-server": "linux"
+    },
+    "security.workspace.trust.untrustedFiles": "open"
 }
