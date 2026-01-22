@@ -36,13 +36,13 @@ project_name/
 ├── project_name/          # Source (same name as project, not src/)
 │   ├── __init__.py        # Contains __version__
 │   ├── settings.py        # Constants, logging config, env loading
-│   ├── main.py            # Entry point for applications
 │   ├── exceptions.py      # Custom exceptions
 │   └── ...
 ├── tests/
 │   ├── conftest.py
 │   ├── test_*.py
 │   └── ...
+├── main.py                # Entry point for applications
 ├── .env                   # Secrets (never committed)
 ├── .env.example           # Template with dummy values
 ├── .gitignore
@@ -54,6 +54,7 @@ project_name/
 - Import `settings.py` first in `__init__.py` to initialize logging and constants
 - Use semantic versioning (MAJOR.MINOR.PATCH)
 - Store version string in `__init__.py` as `__version__`
+- main.py should neighbor the project_name (src/ equivalent) folder, so it can  import all modules without sys.path modification
 
 ## Testing (TDD)
 
