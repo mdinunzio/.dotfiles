@@ -1,39 +1,90 @@
-- python preferences
-	- flake8 Linting
-	- black for formatting (with post prompt hook)
-	- Google-style Docstrings 
-	- Pep 8 compliance
-	- Type hints
-	- Use uv as the package manager
-	- Use pytest for unit and integration tests
-	- Use python-dotenv to load .env files
-	- Use click for cli argument parsing
-	- Write functions for data manipulation tasks when possible, and classes only state is being managed, polymorphism makes sense, or dataclasses are being used, etc.
-	- Sort imports where it does not affect behavior (using iSort)
-- Use test-driven design
-	- Write non-passing tests first
-	- Write and adjust code until all tests pass
-- Good software engineering principles
-	- DRY code
-	- Clear variable naming
-	- Single responsibility principle
-	- Rule of 7
-	- Good modularization
-	- The architecture patterns used should reflect the intended use and effect of the software.
-	- NEVER hardcode credentials files in code that could be exposed on a public remote repo.
-	- Always store sensitive data in a .env file or a secrets manager.
-- Project structure
-	- Add a dedicated settings.py file
-		- Make environment variables as constants here
-		- Setup logging
-		- Import settings.py at the top of `__init.py__` so all logging and constants are the first thing setup whenever any module imports the main project folder
-	- The project folder should be named the same as the project (e.g. how the pandas project has a pandas folder that contains the source). Prefer this over src even for packages.
-	- If the project is a standalone application and not a library, it should have a main.py as (intended) its single point of entry.
-	- semantic versioning
-	- Store environment variables and secrets in .env
-	- Use .gitignore to hide .env files
-- workflow
-	- New branches of needed
-	- 1 pr per major change
-	- Changelog
-	- Version updates
+# Project Preferences
+
+## Python Standards
+
+- Use Python 3.11+ features where beneficial
+- Type hints required on all function signatures
+- Google-style docstrings for all public functions and classes
+- PEP 8 compliance enforced via flake8
+- Format with black (line length 88)
+- Sort imports with isort (black-compatible profile)
+- Use `uv` as the package manager (not pip or poetry)
+- Use `click` for CLI argument parsing
+- Use `python-dotenv` for environment variable loading
+- Use `pytest` for all testing (unit and integration)
+
+## Code Style
+
+- Prefer functions over classes for data manipulation
+- Use classes only when: managing state, polymorphism is needed, or using dataclasses/Pydantic models
+- Keep functions under 50 lines; refactor if longer
+- Keep files under 400 lines; split if larger
+- Limit function parameters to 5-7; use dataclasses or config objects for more
+- Use early returns to reduce nesting
+- Name variables descriptively: `user_count` not `n`, `is_valid` not `flag`
+
+## Error Handling
+
+- Use specific exception types, not bare `except:`
+- Create custom exceptions in a dedicated `exceptions.py` when domain-specific errors are needed
+- Log errors with context before re-raising
+- Fail fast: validate inputs at function boundaries
+
+## Project Structure
+```
+project_name/
+├── project_name/          # Source (same name as project, not src/)
+│   ├── __init__.py        # Contains __version__
+│   ├── settings.py        # Constants, logging config, env loading
+│   ├── main.py            # Entry point for applications
+│   ├── exceptions.py      # Custom exceptions
+│   └── ...
+├── tests/
+│   ├── conftest.py
+│   ├── test_*.py
+│   └── ...
+├── .env                   # Secrets (never committed)
+├── .env.example           # Template with dummy values
+├── .gitignore
+├── pyproject.toml
+├── CHANGELOG.md
+└── README.md
+```
+
+- Import `settings.py` first in `__init__.py` to initialize logging and constants
+- Use semantic versioning (MAJOR.MINOR.PATCH)
+- Store version string in `__init__.py` as `__version__`
+
+## Testing (TDD)
+
+1. Write failing tests first that define expected behavior
+2. Implement minimum code to pass tests
+3. Refactor while keeping tests green
+4. Aim for >80% coverage on business logic
+
+## Security
+
+- NEVER hardcode secrets, API keys, or credentials
+- All sensitive values go in `.env` (add to `.gitignore`)
+- Use `.env.example` with placeholder values for documentation
+- Before committing, verify no secrets in diff
+
+## Git Conventions
+
+- Commit messages: `type: short description` (e.g., `feat: add user authentication`)
+- Types: feat, fix, docs, style, refactor, test, chore
+- Keep commits atomic (one logical change per commit)
+
+## Changelog
+
+- Follow https://keepachangelog.com format
+- Categories: Added, Changed, Deprecated, Removed, Fixed, Security
+- Update changelog with each meaningful change
+
+## Claude Code Behavior
+
+- When modifying existing code, match the existing style even if it differs from these preferences
+- Ask before making architectural changes that affect multiple files
+- Run tests after changes and fix any failures before considering work complete
+- If a task is ambiguous, ask for clarification rather than guessing
+- When adding dependencies, check if an existing dependency already solves the problem
