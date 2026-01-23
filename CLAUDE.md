@@ -30,6 +30,17 @@
 - Log errors with context before re-raising
 - Fail fast: validate inputs at function boundaries
 
+## Naming Conventions for Functions
+
+### Functions that Read Data
+- When reading data from an external source with a potentially expensive delay (e.g. HTTP request or database select) use the `fetch_` prefix for the function name (e.g. `fetch_customer_transactions`)
+- When reading data from the disk or a network drive use the `load_` prefix for the function name (e.g. `load_training_parquet`)
+- When reading data from memory or creating an inexpensive data structure in-memory sources use the `get_` prefix for the function name (e.g. `get_customer_dataframe` or `get_id_to_name_mapping`)
+
+## Other Functions
+- Other functions should generally be a verb that describes what its role is (e.g. `refine_customer_transactions` or `encode_url`)
+- Exceptions can be made to the above rule for boolean queries (e.g. `is_valid`)
+
 ## Project Structure
 ```
 project_name/
