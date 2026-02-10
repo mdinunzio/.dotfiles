@@ -105,7 +105,7 @@
   {
     "key": "space f",
     "command": "actions.find",
-    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && editorTextFocus"
   },
   {
     "key": "escape",
@@ -144,7 +144,17 @@
     "command": "editor.action.clipboardPasteAction",
     "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && editorTextFocus"
   },
-// Claude Extension
+  {
+    "key": "shift+alt+cmd+i",
+    "command": "claude-vscode.focus",
+    "when": "editorTextFocus && !config.claudeCode.useTerminal"
+  },
+  {
+    "key": "cmd+escape",
+    "command": "-claude-vscode.focus",
+    "when": "editorTextFocus && !config.claudeCode.useTerminal"
+  },
+  // Claude Extension
   {
     "key": "ctrl+alt+c",
     "command": "claude-vscode.focus",
