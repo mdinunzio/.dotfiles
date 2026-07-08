@@ -26,5 +26,8 @@
     "remote.SSH.remotePlatform": {
         "oracle-server": "linux"
     },
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.inlineSuggest.enabled": false,
+    "accessibility.signalOptions.volume": 0,
+    "workbench.colorTheme": "Dark Modern"
 }
