@@ -53,6 +53,9 @@ project_name/
 │   ├── conftest.py
 │   ├── test_*.py
 │   └── ...
+├── examples/              # User-friendly quick-start scripts (.py, not .ipynb)
+│   ├── *_demo.py          # Runnable end-to-end examples with `# %%` cells
+│   └── ...
 ├── main.py                # Entry point for applications
 ├── .env                   # Secrets (never committed)
 ├── .env.example           # Template with dummy values
@@ -69,10 +72,33 @@ project_name/
 
 ## Testing (TDD)
 
-1. Write failing tests first that define expected behavior
-2. Implement minimum code to pass tests
-3. Refactor while keeping tests green
-4. Aim for >80% coverage on business logic
+- Use `pytest` in **every** project to test core functionality — no exceptions. Core behavior must have tests before a feature is considered done.
+- Follow the TDD cycle:
+  1. Write failing tests first that define expected behavior
+  2. Implement minimum code to pass tests
+  3. Refactor while keeping tests green
+  4. Aim for >80% coverage on business logic
+
+## Examples
+
+- Every redistributable package (especially Python packages I build for others to use) should ship an `examples/` folder with user-friendly quick-start scripts demonstrating how to use the actual codebase.
+- Examples must be `.py` files, **not** `.ipynb` Jupyter notebooks. Notebooks are finicky, especially with async code.
+- Break examples into sections with the `# %%` cell delimiter so they run interactively as cells in VS Code, while still being runnable top-to-bottom as a normal script.
+- Name example files descriptively by feature or workflow (e.g. `drive_demo.py`, `calendar_demo.py`).
+- Each example should walk through a realistic end-to-end flow (e.g. create → use → clean up) and be runnable as-is after install/auth.
+- `mgdio` (my Google APIs library) is the reference example of this convention — mirror its `examples/` layout and style.
+
+## Redistributable Packages
+
+For any redistributable package (particularly Python packages), before opening a PR, verify and confirm each of the following:
+
+1. **README** — Has the README been updated to reflect the changes?
+2. **Supplemental docs** — Have any other places where the user needs guidance (e.g. `docs/`, `ROADMAP.md`, `CHANGELOG.md`, skill/tool instructions) been updated?
+3. **Docstrings** — Have all affected docstrings been added or updated?
+4. **Tests** — Have all affected tests been added or updated (and do they pass)?
+5. **Examples** — Have all affected example files in `examples/` been added or updated?
+
+State the status of each checklist item explicitly in the PR description (or when summarizing the change), not just silently.
 
 ## Security
 
